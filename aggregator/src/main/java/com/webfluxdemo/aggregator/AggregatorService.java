@@ -2,7 +2,6 @@ package com.webfluxdemo.aggregator;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,9 +19,8 @@ public class AggregatorService {
         this.recommendationService = recommendationService;
     }
 
-    public List<FeedItem> getFeed() {
+    List<FeedItem> getFeed() {
         List<RecommendationDTO> recommendationDTOS = recommendationService.getRecommendations();
-        List<FeedItem> feedItems = new ArrayList<>();
         return recommendationDTOS.stream().map(this::recommendationDTOToFeedItem).collect(Collectors.toList());
     }
 
